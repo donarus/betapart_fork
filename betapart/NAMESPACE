@@ -2,7 +2,11 @@
 exportPattern(".")
 
 # Import required packages
+import(data.table)
 importFrom(geometry, convhulln)
 importFrom(rcdd, d2q, q2d, redundant, scdd)
 importFrom(ape, drop.tip, is.rooted, read.tree)
 importFrom(picante, node.age)
+importFrom(parallel, makeForkCluster, stopCluster)
+importFrom(doParallel, registerDoParallel)
+importFrom(plyr, llply)

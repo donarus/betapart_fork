@@ -70,7 +70,6 @@ dist.mat <- function(com,pair) {
 
 phylo.betapart.core<-function(x, tree)
 {
-
     if (!is.matrix(x)) {
         x <- as.matrix(x)
     }
@@ -107,15 +106,20 @@ phylo.betapart.core<-function(x, tree)
     chunkSize <- 1000
     chunksCnt <- ceiling(ncol(combin)/chunkSize)
     print('computing PD of the two communities combined')
-    
     if(Sys.info()['sysname'] == 'Linux') {
       canRunInParallel = TRUE
     } else {
+      print('parallel processing is supported only on Linux OS')
       canRunInParallel = FALSE
     }
     
     if(canRunInParallel) {
-      cores <- ceiling(detectCores(all.tests=TRUE, logical=FALSE)/2)
+      cores <- getOption('betapart.ncores')
+      if(is.null(cores) || is.na(cores) || !is.numeric(cores) || cores <= 0) {
+        print('betapart.ncores option not specified or invalid, trying to use all system cores')
+        cores <- ceiling(detectCores(all.tests=TRUE, logical=FALSE)/2)
+      }
+      print(sprintf('using %d system cores for parallel processing (can be overrided by betapart.ncores option "options(betapart.ncores=x)")', cores))
       cl <- makeForkCluster(cores)
       registerDoParallel(cl)  
       logFile <- tempfile()

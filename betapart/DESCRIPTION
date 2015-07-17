@@ -1,4 +1,4 @@
-Package: betapart
+Package: betapart.dnrs
 Type: Package
 Title: Partitioning beta diversity into turnover and nestedness
         components
@@ -6,7 +6,7 @@ Version: 1.3
 Date: 2013-12-12
 Author: Andres Baselga, David Orme, Sebastien Villeger, Julien De Bortoli and Fabien Leprieur
 Maintainer: Andres Baselga <andres.baselga@usc.es>
-Imports: ape, geometry, picante, rcdd
+Imports: ape, geometry, picante, rcdd, plyr, data.table, parallel, foreach, doParallel
 Suggests: vegan
 Description: betapart allows computing pair-wise dissimilarities (distance matrices) and multiple-site dissimilarities, separating the turnover and nestedness-resultant components of taxonomic (incidence and abundance based), functional and phylogenetic beta diversity.
 License: GPL (>= 2)
