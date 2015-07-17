@@ -1,0 +1,18 @@
+{
+    "contents" : "",
+    "created" : 1437091590967.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "F65CFE7F",
+    "lastKnownWriteTime" : 2671469658733,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "context" : "package:ape:::drop.tip"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "type" : "r_code_browser"
+}

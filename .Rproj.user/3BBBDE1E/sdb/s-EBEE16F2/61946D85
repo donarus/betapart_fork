@@ -1,0 +1,17 @@
+{
+    "contents" : "phylo.beta.pair<-function (x, tree, index.family = \"sorensen\")\n{\n    index.family <- match.arg(index.family, c(\"jaccard\", \"sorensen\"))\n   \n    pbc<-x\n    if (!inherits(x, \"phylo.betapart\")) {\n    pbc <- phylo.betapart.core(x,tree)\n    } # end of computing core results\n\t\n\tswitch(index.family, sorensen = {\n        phylo.beta.sim <- pbc$min.not.shared/(pbc$min.not.shared + pbc$shared)\n\n        phylo.beta.sne <- ((pbc$max.not.shared - pbc$min.not.shared)/((2 * pbc$shared) + pbc$sum.not.shared)) * (pbc$shared/(pbc$min.not.shared + pbc$shared))\n\n        phylo.beta.sor <- pbc$sum.not.shared/(2 * pbc$shared + pbc$sum.not.shared)\n\n        phylo.pairwise <- list(phylo.beta.sim = phylo.beta.sim, phylo.beta.sne = phylo.beta.sne, phylo.beta.sor = phylo.beta.sor)\n    \t\t\t\t\t\t\t\t},\n\n    \t\t\t\t\t jaccard = {\n        phylo.beta.jtu <- (2 * pbc$min.not.shared)/((2 * pbc$min.not.shared) + pbc$shared)\n\n        phylo.beta.jne <- ((pbc$max.not.shared - pbc$min.not.shared)/(pbc$shared + pbc$sum.not.shared)) * (pbc$shared/((2 * pbc$min.not.shared) + pbc$shared))\n\n        phylo.beta.jac <- pbc$sum.not.shared/(pbc$shared + pbc$sum.not.shared)\n\n        phylo.pairwise <- list(phylo.beta.jtu = phylo.beta.jtu, phylo.beta.jne = phylo.beta.jne, phylo.beta.jac = phylo.beta.jac)\n    \t\t\t\t\t\t\t\t}\n\n    ) # end of switch\n    \n    return(phylo.pairwise)\n\n} # end of function",
+    "created" : 1437090804962.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2950543390",
+    "id" : "61946D85",
+    "lastKnownWriteTime" : 1437090891,
+    "path" : "~/Desktop/optimizeit/betapart/R/phylo.beta.pair.r",
+    "project_path" : "betapart/R/phylo.beta.pair.r",
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

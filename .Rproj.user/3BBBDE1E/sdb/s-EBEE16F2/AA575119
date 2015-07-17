@@ -1,0 +1,18 @@
+{
+    "contents" : "#INSTALAR PACOTES\ninstalledPackages <- as.data.frame(installed.packages(), stringsAsFactors = FALSE)$Package\n\nif (!('ape' %in% installedPackages))             install.packages('ape')\nif (!('geometry' %in% installedPackages))        install.packages('geometry')\nif (!('picante' %in% installedPackages))         install.packages('picante')\nif (!('rcdd' %in% installedPackages))            install.packages('rcdd')\nif (!('vegan' %in% installedPackages))           install.packages('vegan')\nif (!('plyr' %in% installedPackages))            install.packages('plyr')\nif (!('Matrix' %in% installedPackages))          install.packages('Matrix')\nif (!('data.table' %in% installedPackages))      install.packages('data.table')\nif (!('foreach' %in% installedPackages))         install.packages('foreach')\nif (!('doParallel' %in% installedPackages))      install.packages('doParallel')\n#if (!('betapart' %in% installedPackages)) install.packages('betapart')\n\n#ABRIR PACOTES\nlibrary(ape)\nlibrary(geometry)\nlibrary(picante)\nlibrary(rcdd)\nlibrary(vegan)\nlibrary(plyr)\nlibrary(Matrix)\nlibrary(data.table)\nlibrary(foreach)\nlibrary(doParallel)\nlibrary(compiler)\n#library(betapart)\n\nenableJIT(3)\n\n\n\nsource('~/Desktop/optimizeit/betapart/R/beta-sample.R')\nsource('~/Desktop/optimizeit/betapart/R/beta-temporal.R')\nsource('~/Desktop/optimizeit/betapart/R/betapart-core.R')\n# source('~/Desktop/optimizeit/betapart/R/betapart.R')\nsource('~/Desktop/optimizeit/betapart/R/bray-part.R')\nsource('~/Desktop/optimizeit/betapart/R/functional.beta.multi.R')\nsource('~/Desktop/optimizeit/betapart/R/functional.beta.pair.R')\nsource('~/Desktop/optimizeit/betapart/R/functional.betapart.core.R')\nsource('~/Desktop/optimizeit/betapart/R/phylo.beta.multi.r')\nsource('~/Desktop/optimizeit/betapart/R/phylo.beta.pair.r')\nsource('~/Desktop/optimizeit/betapart/R/phylo.betapart.core.r')\n\n\n\n#IMPORTAR ARQUIVOS\ntree<-read.tree(\"local do arquivo/pruned_tree.txt\")\ncomm<-read.table(\"local do arquivo/matriz_pa.txt\")\n\n#CALCULAR PHYLOBETADIVERSIDADE SORENSEN\npbd<-phylo.beta.pair(comm, tree, index.family=\"sorensen\")\n\n#EXPORTAR ARQUIVO QUANDO TERMINAR\nsaveRDS(pbd, '/tmp/result.rds')\n# this cannot work, pbd is not a table nor dataframe\n# write.table(pbd, \"localparaexportação/pbd.txt\")",
+    "created" : 1436979678160.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4131304842",
+    "id" : "AA575119",
+    "lastKnownWriteTime" : 1437093562,
+    "path" : "~/Desktop/optimizeit/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
